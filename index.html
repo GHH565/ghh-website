@@ -434,7 +434,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // UNCLE HEART AI
-const API_URL = "https://api.anthropic.com/v1/messages";
+const API_URL = "/.netlify/functions/chat";
 const SYSTEM = `You are Uncle Heart, a warm, friendly, and knowledgeable health educator from Global Hypertension Helpline. You speak in a friendly, approachable way — like a caring uncle who happens to know everything about health. You specialise in:
 - Hypertension and blood pressure management
 - Cardiac health and heart disease prevention  
@@ -458,13 +458,8 @@ async function sendMessage() {
   try {
     const res = await fetch(API_URL, {
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':'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',
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:1000, system:SYSTEM, messages})
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({system:SYSTEM, messages})
     });
     const data = await res.json();
     const reply = data.content?.[0]?.text || "Hmm, I had a little hiccup there! Try asking me again 😊";
