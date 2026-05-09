@@ -461,8 +461,7 @@ async function sendMessage() {
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify({system:SYSTEM, messages})
     });
-    const data = await res.json();
-    console.log(JSON.stringify(data));    
+    const data = await res.json();    
     const reply = data.content?.[0]?.text || "Hmm, I had a little hiccup there! Try asking me again 😊";
     typing.remove();
     addMsg('bot', reply);
