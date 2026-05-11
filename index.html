@@ -308,6 +308,10 @@ footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top
       <button class="suggestion" onclick="sendSuggestion('What is the DASH diet?')">🥦 DASH diet</button>
       <button class="suggestion" onclick="sendSuggestion('What are the signs of a heart attack?')">🚨 Heart attack signs</button>
     </div>
+    <div style="padding:10px 20px;background:#fff;border-top:1px solid #FFD5CC;display:flex;gap:10px;">
+  <button onclick="copyChat()" style="flex:1;background:#fff;border:2px solid #C0392B;color:#C0392B;padding:10px;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;">📋 Copy Conversation</button>
+  <button onclick="shareWhatsApp()" style="flex:1;background:#25D366;border:none;color:#fff;padding:10px;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;">💬 Share on WhatsApp</button>
+</div>
     <div class="chat-input-area">
       <input class="chat-input" id="chat-input" type="text" placeholder="Ask Uncle Heart about your heart health..." onkeydown="if(event.key==='Enter')sendMessage()"/>
       <button class="send-btn" onclick="sendMessage()">➤</button>
@@ -527,7 +531,29 @@ function addTyping() {
 }
 
 // CONTACT FORM
-function submitForm() {
+  function copyChat() {
+  const msgs = document.querySelectorAll('.msg-bubble');
+  let text = 'My Uncle Heart Conversation:\n\n';
+  document.querySelectorAll('.msg').forEach(m => {
+    const name = m.classList.contains('bot') ? 'Uncle Heart' : 'Me';
+    const bubble = m.querySelector('.msg-bubble');
+    if(bubble) text += name + ': ' + bubble.innerText + '\n\n';
+  });
+  navigator.clipboard.writeText(text);
+  alert('Conversation copied! You can now paste it anywhere 📋');
+}
+function shareWhatsApp() {
+  const msgs = document.querySelectorAll('.msg');
+  let text = '🫀 My Uncle Heart Health Conversation:\n\n';
+  msgs.forEach(m => {
+    const name = m.classList.contains('bot') ? 'Uncle Heart' : 'Me';
+    const bubble = m.querySelector('.msg-bubble');
+    if(bubble) text += name + ': ' + bubble.innerText + '\n\n';
+  });
+  text += 'Get free health advice at globalhypertensionhelpline.com';
+  window.open('https://wa.me/?text=' + encodeURIComponent(text));
+}
+  function submitForm() {
   const name = document.getElementById('fname').value.trim();
   const email = document.getElementById('femail').value.trim();
   const subject = document.getElementById('fsubject').value.trim();
