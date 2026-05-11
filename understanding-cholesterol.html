@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Cholesterol | Global Hypertension Helpline</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#C0392B;--red-dark:#96281B;--red-light:#FADBD8;--gray:#6c6c6c;--off:#FDF8F8}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:#fff;color:#222;overflow-x:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.2)}28%{transform:scale(1)}42%{transform:scale(1.2)}56%{transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+nav{background:rgba(150,40,27,0.97);backdrop-filter:blur(10px);padding:10px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 20px rgba(0,0,0,0.2)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.4)}
+.nav-logo-text strong{font-family:'Playfair Display',serif;font-size:15px;color:#fff;display:block}
+.nav-logo-text span{font-size:10px;color:#FADBD8;letter-spacing:1.5px;text-transform:uppercase;font-weight:300}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:13px;text-decoration:none;padding:6px 14px;border-radius:20px;transition:all 0.3s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.15)}
+.page-hero{background:linear-gradient(135deg,var(--red-dark),var(--red));padding:70px 40px;text-align:center;position:relative;overflow:hidden}
+.page-hero-emoji{font-size:60px;display:block;margin-bottom:16px;animation:float 3s ease-in-out infinite}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:38px;color:#fff;margin-bottom:12px;animation:fadeUp 0.8s ease}
+.page-hero p{color:rgba(255,255,255,0.85);font-size:16px;max-width:600px;margin:0 auto;line-height:1.7;font-weight:300;animation:fadeUp 0.8s ease 0.2s both}
+.hero-tag{display:inline-block;background:rgba(255,255,255,0.15);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.3)}
+.content-wrap{max-width:860px;margin:0 auto;padding:60px 40px}
+.article-meta{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--off);border-radius:10px;margin-bottom:40px;border-left:4px solid var(--red)}
+.article-meta span{font-size:13px;color:var(--gray)}
+.article-meta strong{color:var(--red-dark)}
+h2{font-family:'Playfair Display',serif;font-size:26px;color:#1a1a1a;margin:40px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--red-light)}
+h3{font-size:18px;font-weight:600;color:#1a1a1a;margin:24px 0 10px}
+p{font-size:15px;color:var(--gray);line-height:1.9;margin-bottom:16px;font-weight:300}
+ul,ol{margin:10px 0 20px 24px}
+li{font-size:15px;color:var(--gray);line-height:1.9;font-weight:300;margin-bottom:6px}
+.highlight{background:var(--red-light);border-left:4px solid var(--red);border-radius:6px;padding:18px 22px;margin:24px 0}
+.highlight p{margin:0;color:var(--red-dark);font-weight:400}
+.tip-box{background:#fff;border:2px solid var(--red-light);border-radius:10px;padding:22px;margin:24px 0;box-shadow:0 4px 15px rgba(192,57,43,0.08)}
+.tip-box h4{font-size:15px;font-weight:700;color:var(--red-dark);margin-bottom:10px}
+.tip-box ul{margin:0 0 0 20px}
+.stat-boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:30px 0}
+.stat-box{background:var(--red);color:#fff;border-radius:10px;padding:20px;text-align:center}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;display:block}
+.stat-box .lbl{font-size:12px;opacity:0.85;margin-top:4px}
+.uncle-cta{background:linear-gradient(135deg,var(--red-light),#fff);border:2px solid var(--red-light);border-radius:14px;padding:28px;margin:40px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.uncle-cta img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--red);animation:float 3s ease-in-out infinite}
+.uncle-cta-text h4{font-family:'Playfair Display',serif;font-size:20px;color:var(--red-dark);margin-bottom:6px}
+.uncle-cta-text p{font-size:14px;color:var(--gray);margin:0}
+.ask-btn{display:inline-block;background:var(--red);color:#fff;padding:12px 24px;border-radius:25px;text-decoration:none;font-weight:600;font-size:14px;margin-top:12px;transition:all 0.3s}
+.ask-btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.disclaimer{background:#FFF0ED;border:1px solid #FFD5CC;border-radius:10px;padding:16px 20px;font-size:13px;color:#7B241C;margin-top:30px;text-align:center}
+.back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--red);text-decoration:none;font-weight:600;font-size:14px;margin-bottom:30px;transition:all 0.3s}
+.back-btn:hover{color:var(--red-dark);transform:translateX(-4px)}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:30px}
+.related-card{background:var(--off);border-radius:10px;padding:18px;text-decoration:none;color:#222;border:2px solid #eee;transition:all 0.3s;display:block}
+.related-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 20px rgba(192,57,43,0.12)}
+.related-card span{font-size:24px;display:block;margin-bottom:8px}
+.related-card h4{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
+.related-card p{font-size:12px;color:var(--gray);margin:0}
+footer{background:var(--red-dark);color:rgba(255,255,255,0.8);padding:40px;text-align:center;margin-top:0}
+.footer-logo{width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.4);margin-bottom:12px;animation:heartbeat 2s ease-in-out infinite}
+footer h3{font-family:'Playfair Display',serif;color:#fff;font-size:20px;margin-bottom:6px}
+.footer-motto{display:inline-block;background:#111;color:#fff;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:3px;margin-bottom:14px}
+footer small{font-size:11px;opacity:0.6;display:block;margin-top:16px;border-top:1px solid rgba(255,255,255,0.1);padding-top:14px}
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:999;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.5);text-decoration:none;transition:transform 0.3s}
+.wa-float:hover{transform:scale(1.15)}
+@media(max-width:700px){nav{padding:10px 16px}.content-wrap{padding:40px 20px}.page-hero{padding:50px 20px}.page-hero h1{font-size:28px}}
+</style>
+</head>
+<body>
+<a href="https://wa.me/447350164088" target="_blank" class="wa-float">💬</a>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-text">
+      <strong>Global Hypertension Helpline</strong>
+      <span>United Against Hypertension</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#resources">Resources</a>
+    <a href="index.html#uncle-heart">Ask Uncle Heart</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-hero-emoji">🫀</span>
+  <div class="hero-tag">Heart Health</div>
+  <h1>Understanding Cholesterol</h1>
+  <p>Evidence-based health education from Global Hypertension Helpline</p>
+</div>
+
+<div class="content-wrap">
+  <a href="index.html#resources" class="back-btn">← Back to Resources</a>
+
+  <div class="article-meta">
+    <span>📅 <strong>Published:</strong> May 2026</span>
+    <span>⏱️ <strong>Read time:</strong> 6 min</span>
+    <span>✍️ <strong>By:</strong> GHH Health Team</span>
+  </div>
+
+  <p>Cholesterol is one of those words that makes many people nervous — but it shouldn't always. Cholesterol is actually a natural substance that your body needs to function properly. The problem only arises when certain types build up too much in your blood. Understanding cholesterol is one of the most important steps you can take for your heart health.</p>
+
+  <div class="stat-boxes">
+    <div class="stat-box">
+      <span class="num">39%</span>
+      <div class="lbl">of adults worldwide have high cholesterol</div>
+    </div>
+    <div class="stat-box">
+      <span class="num">2.6M</span>
+      <div class="lbl">deaths annually linked to high cholesterol</div>
+    </div>
+    <div class="stat-box">
+      <span class="num">50%</span>
+      <div class="lbl">of people with high cholesterol have no symptoms</div>
+    </div>
+  </div>
+
+  <h2>What Is Cholesterol?</h2>
+  <p>Cholesterol is a waxy, fat-like substance found naturally in every cell of your body. Your liver produces most of the cholesterol your body needs. You also get cholesterol from animal-based foods like meat, dairy, and eggs.</p>
+  <p>Cholesterol travels through your bloodstream in small packages called <strong>lipoproteins</strong>. These are made of fat on the inside and protein on the outside. There are two main types that you need to know about.</p>
+
+  <h2>LDL vs HDL: The Key Difference</h2>
+
+  <h3>LDL Cholesterol — "The Bad One"</h3>
+  <p>LDL stands for <strong>Low-Density Lipoprotein</strong>. This is often called "bad" cholesterol because high levels can lead to a buildup of cholesterol in your arteries. Over time, this buildup (called plaque) narrows and hardens your arteries — a condition called atherosclerosis. This makes it harder for blood to flow, which can cause a heart attack or stroke.</p>
+
+  <div class="highlight">
+    <p>⚠️ <strong>Target:</strong> LDL cholesterol should ideally be below 3.0 mmol/L for most adults. If you have heart disease or diabetes, your doctor may aim for below 2.0 mmol/L.</p>
+  </div>
+
+  <h3>HDL Cholesterol — "The Good One"</h3>
+  <p>HDL stands for <strong>High-Density Lipoprotein</strong>. This is known as "good" cholesterol because it carries cholesterol away from the arteries and back to the liver, where it is broken down and removed from the body. Higher levels of HDL are actually protective against heart disease.</p>
+
+  <div class="highlight">
+    <p>✅ <strong>Target:</strong> HDL cholesterol should ideally be above 1.0 mmol/L for men and above 1.2 mmol/L for women.</p>
+  </div>
+
+  <h3>Triglycerides</h3>
+  <p>Triglycerides are another type of fat in your blood. When you eat more calories than you need, your body converts the extra calories into triglycerides and stores them in fat cells. High triglycerides combined with low HDL or high LDL are linked to an increased risk of heart disease.</p>
+
+  <h2>What Causes High Cholesterol?</h2>
+  <p>Several factors can raise your LDL cholesterol or lower your HDL cholesterol:</p>
+  <ul>
+    <li><strong>Unhealthy diet</strong> — eating too much saturated fat (found in fatty meat, butter, cheese) and trans fats (found in processed foods)</li>
+    <li><strong>Lack of physical activity</strong> — exercise helps raise HDL and lower LDL</li>
+    <li><strong>Obesity</strong> — being overweight tends to raise LDL and lower HDL</li>
+    <li><strong>Smoking</strong> — damages blood vessels and lowers HDL cholesterol</li>
+    <li><strong>Genetics</strong> — familial hypercholesterolaemia is an inherited condition causing very high cholesterol</li>
+    <li><strong>Age</strong> — cholesterol tends to rise as we get older</li>
+    <li><strong>Medical conditions</strong> — diabetes, kidney disease, and hypothyroidism can all affect cholesterol</li>
+  </ul>
+
+  <h2>Symptoms of High Cholesterol</h2>
+  <p>This is the most dangerous thing about high cholesterol — <strong>it has no symptoms</strong>. You can have dangerously high cholesterol and feel completely fine. The only way to know your cholesterol levels is to get a blood test.</p>
+
+  <div class="tip-box">
+    <h4>🩺 When Should You Get Tested?</h4>
+    <ul>
+      <li>Adults over 40 should have cholesterol checked regularly</li>
+      <li>Anyone with a family history of heart disease or high cholesterol</li>
+      <li>People with diabetes, high blood pressure, or obesity</li>
+      <li>Those who smoke or are overweight</li>
+      <li>If your doctor recommends it at any age</li>
+    </ul>
+  </div>
+
+  <h2>The Link Between Cholesterol and Blood Pressure</h2>
+  <p>High cholesterol and high blood pressure often go hand in hand. When LDL cholesterol builds up as plaque in your arteries, the arteries become narrower and less flexible. This makes your heart work harder to pump blood through them — raising your blood pressure. Having both high cholesterol AND high blood pressure at the same time greatly increases your risk of heart attack and stroke.</p>
+
+  <div class="highlight">
+    <p>🫀 <strong>Important:</strong> Managing both conditions together is far more effective than treating them separately. Talk to your doctor about a combined approach.</p>
+  </div>
+
+  <h2>How to Lower Your Cholesterol Naturally</h2>
+
+  <h3>1. Eat Heart-Healthy Foods</h3>
+  <ul>
+    <li>Choose foods rich in <strong>soluble fibre</strong> — oats, beans, lentils, apples, pears</li>
+    <li>Eat more <strong>omega-3 rich fish</strong> — salmon, mackerel, sardines (twice a week)</li>
+    <li>Use <strong>olive oil</strong> instead of butter or coconut oil</li>
+    <li>Eat <strong>nuts and seeds</strong> — walnuts, almonds, flaxseeds</li>
+    <li>Add <strong>plant sterols</strong> — found in some margarines and yoghurts</li>
+  </ul>
+
+  <h3>2. Reduce Saturated and Trans Fats</h3>
+  <ul>
+    <li>Limit fatty red meat, sausages, and processed meats</li>
+    <li>Choose low-fat dairy products</li>
+    <li>Avoid fried foods and baked goods made with hydrogenated oils</li>
+    <li>Read food labels — look for "partially hydrogenated" oils</li>
+  </ul>
+
+  <h3>3. Exercise Regularly</h3>
+  <p>Physical activity is one of the best ways to raise your HDL (good) cholesterol. Aim for at least 150 minutes of moderate exercise per week — brisk walking, cycling, swimming, or dancing all count.</p>
+
+  <h3>4. Maintain a Healthy Weight</h3>
+  <p>Even losing a small amount of weight if you are overweight can help lower LDL cholesterol and triglycerides while raising HDL.</p>
+
+  <h3>5. Stop Smoking</h3>
+  <p>Quitting smoking improves HDL cholesterol levels and benefits your heart in many other ways within just a few weeks.</p>
+
+  <h3>6. Limit Alcohol</h3>
+  <p>Excessive alcohol raises triglyceride levels. If you drink, stick to recommended limits — no more than 14 units per week for adults.</p>
+
+  <div class="tip-box">
+    <h4>🥣 Top Cholesterol-Lowering Foods</h4>
+    <ul>
+      <li>Porridge oats and oat bran</li>
+      <li>Kidney beans, chickpeas, and lentils</li>
+      <li>Avocado</li>
+      <li>Berries (blueberries, strawberries)</li>
+      <li>Garlic</li>
+      <li>Green tea</li>
+      <li>Dark leafy vegetables (spinach, kale)</li>
+    </ul>
+  </div>
+
+  <h2>When Is Medication Needed?</h2>
+  <p>For some people, lifestyle changes alone are not enough to bring cholesterol to a safe level. Your doctor may prescribe <strong>statins</strong> or other cholesterol-lowering medications. These are very effective and safe for most people when prescribed appropriately.</p>
+  <p>Do not stop taking prescribed medication without speaking to your doctor first — even if you feel fine.</p>
+
+  <h2>Understanding Your Cholesterol Results</h2>
+  <p>When you get a cholesterol blood test, you will receive several numbers. Here is a simple guide:</p>
+  <ul>
+    <li><strong>Total cholesterol:</strong> Should be below 5.0 mmol/L</li>
+    <li><strong>LDL cholesterol:</strong> Should be below 3.0 mmol/L</li>
+    <li><strong>HDL cholesterol:</strong> Should be above 1.0 mmol/L (men) or 1.2 mmol/L (women)</li>
+    <li><strong>Triglycerides:</strong> Should be below 1.7 mmol/L</li>
+  </ul>
+  <p>Your doctor will interpret these numbers in the context of your overall health, age, and other risk factors.</p>
+
+  <div class="uncle-cta">
+    <div class="uncle-cta-text">
+      <h4>🫀 Have Questions About Cholesterol?</h4>
+      <p>Ask Uncle Heart — our free AI health guide — any questions about cholesterol, heart health, diet, or blood pressure. Available 24/7, completely free.</p>
+      <a href="index.html#uncle-heart" class="ask-btn">Ask Uncle Heart Now →</a>
+    </div>
+  </div>
+
+  <h2>Related Articles</h2>
+  <div class="related-grid">
+    <a href="dash-diet.html" class="related-card">
+      <span>🥦</span>
+      <h4>The DASH Diet</h4>
+      <p>Eat your way to lower blood pressure</p>
+    </a>
+    <a href="exercise-heart.html" class="related-card">
+      <span>🏃</span>
+      <h4>Exercise & Your Heart</h4>
+      <p>How movement protects your heart</p>
+    </a>
+    <a href="blood-pressure-numbers.html" class="related-card">
+      <span>🩺</span>
+      <h4>Blood Pressure Numbers</h4>
+      <p>What your readings really mean</p>
+    </a>
+    <a href="sodium-heart.html" class="related-card">
+      <span>🧂</span>
+      <h4>Sodium & Heart Health</h4>
+      <p>How salt affects your blood pressure</p>
+    </a>
+  </div>
+
+  <div class="disclaimer">
+    ⚕️ <strong>Medical Disclaimer:</strong> This article is for educational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional for personal medical guidance.
+  </div>
+</div>
+
+<footer>
+  <h3>Global Hypertension Helpline</h3>
+  <div class="footer-motto">United Against Hypertension</div>
+  <p>Free heart health education for everyone, everywhere.</p>
+  <p>📧 info@globalhypertensionhelpline.com &nbsp;|&nbsp; 📞 +44 7350 164088</p>
+  <small>© 2026 Global Hypertension Helpline. All rights reserved. | This website provides health education only — not medical advice.</small>
+</footer>
+</body>
+</html>
