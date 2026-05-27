@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Tools | Global Hypertension Helpline</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0392B;
+    --dark-red: #96281B;
+    --navy: #1B2A4A;
+    --light-navy: #2C3E6B;
+    --cream: #FDF8F3;
+    --white: #FFFFFF;
+    --grey: #6B7280;
+    --light-grey: #F3F4F6;
+    --green: #1A7A4A;
+    --orange: #E67E22;
+    --shadow: 0 4px 24px rgba(27,42,74,0.10);
+    --shadow-lg: 0 8px 40px rgba(27,42,74,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .nav-back {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: white; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--light-navy) 60%, #3a5298 100%);
+    padding: 64px 32px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(192,57,43,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(192,57,43,0.2);
+    color: #ff8a80;
+    border: 1px solid rgba(192,57,43,0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 17px;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  .hero-tools-count {
+    display: inline-flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-tools-count span {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #FFF8E1;
+    border-left: 4px solid #F59E0B;
+    padding: 16px 24px;
+    margin: 32px auto;
+    max-width: 900px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: #92400E;
+    line-height: 1.6;
+  }
+
+  /* TOOLS GRID */
+  .tools-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    margin-top: 40px;
+  }
+  .section-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--navy);
+  }
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, #ddd, transparent);
+  }
+
+  /* TOOL CARD */
+  .tool-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(27,42,74,0.06);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .tool-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .tool-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .tool-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .icon-red { background: rgba(192,57,43,0.1); }
+  .icon-navy { background: rgba(27,42,74,0.1); }
+  .icon-green { background: rgba(26,122,74,0.1); }
+  .icon-orange { background: rgba(230,126,34,0.1); }
+  .icon-purple { background: rgba(142,68,173,0.1); }
+
+  .tool-title h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .tool-title p {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  /* FORM ELEMENTS */
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .input-row.single { grid-template-columns: 1fr; }
+  .input-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+  .input-group input, .input-group select {
+    padding: 12px 16px;
+    border: 2px solid #E5E7EB;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--navy);
+    background: var(--light-grey);
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+  .input-group input:focus, .input-group select:focus {
+    border-color: var(--red);
+    background: white;
+  }
+
+  .calc-btn {
+    background: linear-gradient(135deg, var(--red), var(--dark-red));
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    letter-spacing: 0.3px;
+  }
+  .calc-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(192,57,43,0.4);
+  }
+  .calc-btn:active { transform: translateY(0); }
+
+  /* RESULT BOX */
+  .result-box {
+    display: none;
+    margin-top: 24px;
+    border-radius: 14px;
+    overflow: hidden;
+    animation: slideIn 0.4s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .result-box.show { display: block; }
+
+  .result-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .result-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: white;
+  }
+  .result-category {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+  }
+  .result-body {
+    background: white;
+    padding: 20px 24px;
+    border: 1px solid #E5E7EB;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+  }
+  .result-body p {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .result-body p:last-child { margin-bottom: 0; }
+  .result-tips {
+    background: #F0FDF4;
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 12px;
+  }
+  .result-tips p {
+    font-size: 13px;
+    color: #166534;
+    margin: 0;
+  }
+  .result-warning {
+    background: #FEF3C7;
+    border-left: 3px solid #F59E0B;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 12px;
+  }
+  .result-warning p {
+    font-size: 13px;
+    color: #92400E;
+    margin: 0;
+  }
+
+  /* BP SCALE */
+  .bp-scale {
+    display: flex;
+    gap: 4px;
+    margin-top: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .bp-scale-item {
+    flex: 1;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.3px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 32px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  footer a { color: #ff8a80; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .input-row { grid-template-columns: 1fr; }
+    .input-row.triple { grid-template-columns: 1fr 1fr; }
+    .tool-card { padding: 24px 20px; }
+    nav { padding: 14px 20px; }
+    .hero { padding: 48px 20px 64px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">❤️</div>
+    <span class="nav-logo-text">GHH</span>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Free Health Tools</div>
+  <h1>Know Your Numbers.<br>Protect Your Heart.</h1>
+  <p>Use our free interactive health calculators to understand your cardiovascular risk and get personalised guidance.</p>
+  <div class="hero-tools-count">
+    <span>❤️ Blood Pressure</span>
+    <span>⚖️ BMI Calculator</span>
+    <span>💓 Heart Rate</span>
+    <span>🫀 Heart Age</span>
+    <span>📊 CV Risk Score</span>
+  </div>
+</div>
+
+<div class="tools-section">
+
+  <div class="disclaimer">
+    ⚠️ <strong>Medical Disclaimer:</strong> These tools are for educational purposes only and do not replace professional medical advice. Always consult your GP or healthcare provider for diagnosis and treatment.
+  </div>
+
+  <div class="section-label">
+    <h2>Cardiovascular Health Tools</h2>
+    <div class="section-label-line"></div>
+  </div>
+
+  <!-- TOOL 1: BLOOD PRESSURE -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon icon-red">🩺</div>
+      <div class="tool-title">
+        <h3>Blood Pressure Checker</h3>
+        <p>Enter your reading to find out what your blood pressure means</p>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Systolic (top number) mmHg</label>
+        <input type="number" id="bp-systolic" placeholder="e.g. 120" min="60" max="250">
+      </div>
+      <div class="input-group">
+        <label>Diastolic (bottom number) mmHg</label>
+        <input type="number" id="bp-diastolic" placeholder="e.g. 80" min="40" max="150">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="checkBP()">Check My Blood Pressure</button>
+    <div class="result-box" id="bp-result">
+      <div class="result-header" id="bp-result-header">
+        <div>
+          <div class="result-value" id="bp-result-value"></div>
+          <div class="result-category" id="bp-result-category"></div>
+        </div>
+      </div>
+      <div class="result-body" id="bp-result-body"></div>
+    </div>
+  </div>
+
+  <!-- TOOL 2: BMI -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon icon-navy">⚖️</div>
+      <div class="tool-title">
+        <h3>BMI Calculator</h3>
+        <p>Calculate your Body Mass Index and understand what it means for your heart health</p>
+      </div>
+    </div>
+    <div class="input-row triple">
+      <div class="input-group">
+        <label>Height (cm)</label>
+        <input type="number" id="bmi-height" placeholder="e.g. 175" min="100" max="250">
+      </div>
+      <div class="input-group">
+        <label>Weight (kg)</label>
+        <input type="number" id="bmi-weight" placeholder="e.g. 75" min="30" max="300">
+      </div>
+      <div class="input-group">
+        <label>Age</label>
+        <input type="number" id="bmi-age" placeholder="e.g. 35" min="18" max="100">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="checkBMI()">Calculate My BMI</button>
+    <div class="result-box" id="bmi-result">
+      <div class="result-header" id="bmi-result-header">
+        <div>
+          <div class="result-value" id="bmi-result-value"></div>
+          <div class="result-category" id="bmi-result-category"></div>
+        </div>
+      </div>
+      <div class="result-body" id="bmi-result-body"></div>
+    </div>
+  </div>
+
+  <!-- TOOL 3: HEART RATE -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon icon-green">💓</div>
+      <div class="tool-title">
+        <h3>Heart Rate Checker</h3>
+        <p>Check your resting heart rate and discover your exercise heart rate zones</p>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Resting Heart Rate (BPM)</label>
+        <input type="number" id="hr-rate" placeholder="e.g. 72" min="30" max="200">
+      </div>
+      <div class="input-group">
+        <label>Your Age</label>
+        <input type="number" id="hr-age" placeholder="e.g. 35" min="18" max="100">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="checkHeartRate()">Check My Heart Rate</button>
+    <div class="result-box" id="hr-result">
+      <div class="result-header" id="hr-result-header">
+        <div>
+          <div class="result-value" id="hr-result-value"></div>
+          <div class="result-category" id="hr-result-category"></div>
+        </div>
+      </div>
+      <div class="result-body" id="hr-result-body"></div>
+    </div>
+  </div>
+
+  <!-- TOOL 4: HEART AGE -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon icon-orange">🫀</div>
+      <div class="tool-title">
+        <h3>Heart Age Estimator</h3>
+        <p>Estimate your heart's biological age based on your key risk factors</p>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Your Age</label>
+        <input type="number" id="ha-age" placeholder="e.g. 45" min="18" max="100">
+      </div>
+      <div class="input-group">
+        <label>Gender</label>
+        <select id="ha-gender">
+          <option value="">Select...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Systolic BP (mmHg)</label>
+        <input type="number" id="ha-bp" placeholder="e.g. 130" min="80" max="220">
+      </div>
+      <div class="input-group">
+        <label>BMI</label>
+        <input type="number" id="ha-bmi" placeholder="e.g. 26" min="15" max="50" step="0.1">
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Do you smoke?</label>
+        <select id="ha-smoke">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+          <option value="ex">Ex-smoker</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Physically active?</label>
+        <select id="ha-active">
+          <option value="yes">Yes, regularly</option>
+          <option value="some">Sometimes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Diabetes diagnosed?</label>
+        <select id="ha-diabetes">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Family history of heart disease?</label>
+        <select id="ha-family">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="checkHeartAge()">Estimate My Heart Age</button>
+    <div class="result-box" id="ha-result">
+      <div class="result-header" id="ha-result-header">
+        <div>
+          <div class="result-value" id="ha-result-value"></div>
+          <div class="result-category" id="ha-result-category"></div>
+        </div>
+      </div>
+      <div class="result-body" id="ha-result-body"></div>
+    </div>
+  </div>
+
+  <!-- TOOL 5: CV RISK -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-icon icon-purple">📊</div>
+      <div class="tool-title">
+        <h3>Cardiovascular Risk Score</h3>
+        <p>Assess your 10-year risk of a cardiovascular event based on key lifestyle factors</p>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Age</label>
+        <input type="number" id="cv-age" placeholder="e.g. 50" min="18" max="100">
+      </div>
+      <div class="input-group">
+        <label>Gender</label>
+        <select id="cv-gender">
+          <option value="">Select...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="input-row">
+      <div class="input-group">
+        <label>Systolic BP (mmHg)</label>
+        <input type="number" id="cv-bp" placeholder="e.g. 135" min="80" max="220">
+      </div>
+      <div class="input-group">
+        <label>BMI</label>
+        <input type="number" id="cv-bmi" placeholder="e.g. 28" min="15" max="50" step="0.1">
+      </div>
+    </div>
+    <div class="input-row triple">
+      <div class="input-group">
+        <label>Smoker?</label>
+        <select id="cv-smoke">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+          <option value="ex">Ex-smoker</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Diabetes?</label>
+        <select id="cv-diabetes">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Exercise?</label>
+        <select id="cv-exercise">
+          <option value="regular">Regularly</option>
+          <option value="some">Sometimes</option>
+          <option value="none">Never</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="checkCVRisk()">Calculate My Risk Score</button>
+    <div class="result-box" id="cv-result">
+      <div class="result-header" id="cv-result-header">
+        <div>
+          <div class="result-value" id="cv-result-value"></div>
+          <div class="result-category" id="cv-result-category"></div>
+        </div>
+      </div>
+      <div class="result-body" id="cv-result-body"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Global Hypertension Helpline. All rights reserved.</p>
+  <p style="margin-top:8px;">These tools are for educational purposes only. Always seek advice from a qualified healthcare professional.<br>
+  <a href="index.html">← Back to Home</a> | <a href="privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+// ===== BLOOD PRESSURE =====
+function checkBP() {
+  const sys = parseInt(document.getElementById('bp-systolic').value);
+  const dia = parseInt(document.getElementById('bp-diastolic').value);
+  if (!sys || !dia || sys < 60 || sys > 250 || dia < 40 || dia > 150) {
+    alert('Please enter valid blood pressure values.');
+    return;
+  }
+  let color, category, advice, tips, warning = '';
+  if (sys < 90 || dia < 60) {
+    color = '#3B82F6'; category = 'Low Blood Pressure (Hypotension)';
+    advice = 'Your blood pressure is lower than normal. Low blood pressure can cause dizziness, fainting, and fatigue. While it is often less dangerous than high blood pressure, it still requires attention.';
+    tips = '💡 Tips: Stay well hydrated, avoid standing up too quickly, eat smaller more frequent meals, and increase salt intake slightly unless advised otherwise. If you feel faint or dizzy regularly, see your GP.';
+  } else if (sys < 120 && dia < 80) {
+    color = '#16A34A'; category = 'Optimal Blood Pressure ✓';
+    advice = 'Excellent! Your blood pressure is in the ideal range. This is associated with the lowest risk of heart disease and stroke. Keep maintaining your healthy lifestyle.';
+    tips = '💡 Keep it up: Continue with regular exercise, a balanced low-sodium diet, maintaining a healthy weight, and avoiding smoking and excessive alcohol.';
+  } else if (sys < 130 && dia < 85) {
+    color = '#65A30D'; category = 'Normal Blood Pressure ✓';
+    advice = 'Your blood pressure is within the normal range. This is a healthy reading. Continue your current lifestyle habits to maintain this level.';
+    tips = '💡 Stay on track: Regular exercise, reducing salt intake, and maintaining a healthy weight will help keep your numbers in this range.';
+  } else if (sys < 140 || dia < 90) {
+    color = '#F59E0B'; category = 'High Normal / Pre-Hypertension';
+    advice = 'Your blood pressure is slightly elevated. This is sometimes called pre-hypertension and is a warning sign that you may develop high blood pressure in the future without lifestyle changes.';
+    tips = '💡 Action steps: Reduce salt intake to under 6g per day, increase physical activity, maintain a healthy weight, limit alcohol, and follow the DASH diet. Monitor your BP regularly.';
+    warning = '⚠️ Consider discussing this reading with your GP, especially if it is consistently in this range.';
+  } else if (sys < 160 || dia < 100) {
+    color = '#EF4444'; category = 'Stage 1 Hypertension';
+    advice = 'Your blood pressure is high. Stage 1 hypertension increases your risk of heart disease, stroke, and kidney problems. Lifestyle changes are essential and medication may be needed.';
+    tips = '💡 Important steps: Reduce salt significantly, follow the DASH diet, exercise regularly (150 mins/week), stop smoking, limit alcohol, and manage stress. Medication may be recommended by your doctor.';
+    warning = '⚠️ Please see your GP soon to discuss this reading and a management plan.';
+  } else if (sys < 180 || dia < 110) {
+    color = '#DC2626'; category = 'Stage 2 Hypertension';
+    advice = 'Your blood pressure is significantly elevated. Stage 2 hypertension poses a serious risk to your heart, brain, and kidneys. Medical attention is needed.';
+    tips = '💡 Seek help: Medication is usually required at this stage alongside lifestyle changes. Do not delay — untreated hypertension at this level greatly increases your risk of heart attack and stroke.';
+    warning = '⚠️ Please see your GP as soon as possible. Do not ignore this reading.';
+  } else {
+    color = '#7F1D1D'; category = 'Hypertensive Crisis — Seek Help Now';
+    advice = 'This is a dangerously high blood pressure reading. A hypertensive crisis requires immediate medical attention. You may be at risk of a heart attack, stroke, or other life-threatening event.';
+    tips = '';
+    warning = '🚨 URGENT: If you have symptoms such as chest pain, severe headache, vision changes, or difficulty breathing — call 999 immediately. Even without symptoms, seek emergency medical care today.';
+  }
+  const resultBox = document.getElementById('bp-result');
+  document.getElementById('bp-result-header').style.background = color;
+  document.getElementById('bp-result-value').textContent = sys + '/' + dia + ' mmHg';
+  document.getElementById('bp-result-category').textContent = category;
+  document.getElementById('bp-result-body').innerHTML = `
+    <p>${advice}</p>
+    ${tips ? `<div class="result-tips"><p>${tips}</p></div>` : ''}
+    ${warning ? `<div class="result-warning"><p>${warning}</p></div>` : ''}
+    <div class="bp-scale">
+      <div class="bp-scale-item" style="background:#3B82F6">Low<br>&lt;90</div>
+      <div class="bp-scale-item" style="background:#16A34A">Optimal<br>&lt;120</div>
+      <div class="bp-scale-item" style="background:#65A30D">Normal<br>&lt;130</div>
+      <div class="bp-scale-item" style="background:#F59E0B">High Normal<br>&lt;140</div>
+      <div class="bp-scale-item" style="background:#EF4444">Stage 1<br>&lt;160</div>
+      <div class="bp-scale-item" style="background:#DC2626">Stage 2<br>&lt;180</div>
+      <div class="bp-scale-item" style="background:#7F1D1D">Crisis<br>180+</div>
+    </div>
+  `;
+  resultBox.classList.add('show');
+  resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ===== BMI =====
+function checkBMI() {
+  const h = parseFloat(document.getElementById('bmi-height').value);
+  const w = parseFloat(document.getElementById('bmi-weight').value);
+  const age = parseInt(document.getElementById('bmi-age').value);
+  if (!h || !w || h < 100 || h > 250 || w < 30 || w > 300) {
+    alert('Please enter valid height and weight values.');
+    return;
+  }
+  const bmi = (w / ((h / 100) ** 2)).toFixed(1);
+  let color, category, advice, tips;
+  if (bmi < 18.5) {
+    color = '#3B82F6'; category = 'Underweight';
+    advice = `Your BMI of ${bmi} indicates you are underweight. Being underweight can affect your heart health, bone density, immune function, and energy levels.`;
+    tips = '💡 Consider speaking with a dietitian or GP to develop a healthy weight gain plan. Focus on nutrient-dense foods including healthy fats, proteins, and complex carbohydrates.';
+  } else if (bmi < 25) {
+    color = '#16A34A'; category = 'Healthy Weight ✓';
+    advice = `Your BMI of ${bmi} is within the healthy range. This is associated with lower risk of heart disease, type 2 diabetes, and hypertension. Well done!`;
+    tips = '💡 Maintain your healthy weight through regular physical activity and a balanced diet. Your heart will thank you!';
+  } else if (bmi < 30) {
+    color = '#F59E0B'; category = 'Overweight';
+    advice = `Your BMI of ${bmi} places you in the overweight category. Excess weight, particularly around the abdomen, increases your risk of high blood pressure, heart disease, and type 2 diabetes.`;
+    tips = '💡 Aim for gradual weight loss of 0.5–1kg per week through dietary changes and increased physical activity. Even losing 5–10% of your body weight can significantly reduce cardiovascular risk.';
+  } else if (bmi < 35) {
+    color = '#EF4444'; category = 'Obese (Class I)';
+    advice = `Your BMI of ${bmi} indicates Class I obesity, which significantly raises your risk of hypertension, heart disease, stroke, and type 2 diabetes. Medical guidance is recommended.`;
+    tips = '💡 Speak with your GP about a structured weight management programme. Lifestyle changes including diet, exercise, and behavioural support can make a significant difference.';
+  } else {
+    color = '#DC2626'; category = 'Obese (Class II/III)';
+    advice = `Your BMI of ${bmi} indicates severe obesity, which carries serious cardiovascular and metabolic health risks. Medical support is strongly recommended.`;
+    tips = '💡 Please speak with your GP or a specialist about a comprehensive weight management plan. Medical and surgical options may be available depending on your circumstances.';
+  }
+  document.getElementById('bmi-result-header').style.background = color;
+  document.getElementById('bmi-result-value').textContent = 'BMI ' + bmi;
+  document.getElementById('bmi-result-category').textContent = category;
+  document.getElementById('bmi-result-body').innerHTML = `
+    <p>${advice}</p>
+    <div class="${bmi >= 25 ? 'result-warning' : 'result-tips'}"><p>${tips}</p></div>
+    <p style="margin-top:12px;font-size:13px;color:#6B7280;">Note: BMI is a screening tool and does not account for muscle mass, bone density, or body composition. Consult your GP for a full assessment.</p>
+  `;
+  document.getElementById('bmi-result').classList.add('show');
+  document.getElementById('bmi-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ===== HEART RATE =====
+function checkHeartRate() {
+  const hr = parseInt(document.getElementById('hr-rate').value);
+  const age = parseInt(document.getElementById('hr-age').value);
+  if (!hr || hr < 30 || hr > 200) { alert('Please enter a valid heart rate between 30 and 200 BPM.'); return; }
+  if (!age || age < 18 || age > 100) { alert('Please enter a valid age.'); return; }
+  const maxHR = 220 - age;
+  const zone1 = Math.round(maxHR * 0.5) + '–' + Math.round(maxHR * 0.6);
+  const zone2 = Math.round(maxHR * 0.6) + '–' + Math.round(maxHR * 0.7);
+  const zone3 = Math.round(maxHR * 0.7) + '–' + Math.round(maxHR * 0.8);
+  const zone4 = Math.round(maxHR * 0.8) + '–' + Math.round(maxHR * 0.9);
+  let color, category, advice;
+  if (hr < 40) {
+    color = '#3B82F6'; category = 'Very Low — Seek Medical Advice';
+    advice = 'A resting heart rate below 40 BPM may indicate bradycardia. While highly trained athletes can have very low heart rates naturally, this reading warrants medical assessment.';
+  } else if (hr < 60) {
+    color = '#16A34A'; category = 'Athletic / Low Normal';
+    advice = 'A resting heart rate of ' + hr + ' BPM is low-normal, often seen in physically fit or athletic individuals. This can indicate good cardiovascular fitness. If you experience dizziness or fatigue, consult your GP.';
+  } else if (hr <= 100) {
+    color = '#16A34A'; category = 'Normal Resting Heart Rate ✓';
+    advice = 'Your resting heart rate of ' + hr + ' BPM is within the normal range (60–100 BPM). A lower resting heart rate within this range generally indicates better cardiovascular fitness.';
+  } else if (hr <= 120) {
+    color = '#F59E0B'; category = 'Elevated — Monitor Closely';
+    advice = 'Your resting heart rate of ' + hr + ' BPM is above the normal range. This could be due to stress, dehydration, caffeine, illness, or an underlying condition. Monitor over several days.';
+  } else {
+    color = '#EF4444'; category = 'High — Consult Your GP';
+    advice = 'A resting heart rate above 120 BPM requires medical evaluation. This could indicate tachycardia or another cardiovascular issue. Please see your GP soon.';
+  }
+  document.getElementById('hr-result-header').style.background = color;
+  document.getElementById('hr-result-value').textContent = hr + ' BPM';
+  document.getElementById('hr-result-category').textContent = category;
+  document.getElementById('hr-result-body').innerHTML = `
+    <p>${advice}</p>
+    <div class="result-tips">
+      <p>💡 <strong>Your Exercise Heart Rate Zones</strong> (based on age ${age}, max HR: ${maxHR} BPM)<br>
+      🟦 Zone 1 – Warm up: ${zone1} BPM<br>
+      🟩 Zone 2 – Fat burn: ${zone2} BPM<br>
+      🟨 Zone 3 – Aerobic: ${zone3} BPM<br>
+      🟥 Zone 4 – Anaerobic: ${zone4} BPM</p>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#6B7280;">Measure your resting heart rate in the morning before getting out of bed for the most accurate reading.</p>
+  `;
+  document.getElementById('hr-result').classList.add('show');
+  document.getElementById('hr-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ===== HEART AGE =====
+function checkHeartAge() {
+  const age = parseInt(document.getElementById('ha-age').value);
+  const gender = document.getElementById('ha-gender').value;
+  const bp = parseInt(document.getElementById('ha-bp').value);
+  const bmi = parseFloat(document.getElementById('ha-bmi').value);
+  const smoke = document.getElementById('ha-smoke').value;
+  const active = document.getElementById('ha-active').value;
+  const diabetes = document.getElementById('ha-diabetes').value;
+  const family = document.getElementById('ha-family').value;
+  if (!age || !gender || !bp || !bmi) { alert('Please fill in all fields.'); return; }
+  let extra = 0;
+  if (bp >= 140) extra += 5;
+  else if (bp >= 130) extra += 3;
+  else if (bp >= 120) extra += 1;
+  if (bmi >= 30) extra += 4;
+  else if (bmi >= 25) extra += 2;
+  if (smoke === 'yes') extra += 8;
+  else if (smoke === 'ex') extra += 2;
+  if (active === 'none') extra += 4;
+  else if (active === 'some') extra += 1;
+  if (diabetes === 'yes') extra += 6;
+  if (family === 'yes') extra += 3;
+  if (gender === 'male') extra += 2;
+  const heartAge = age + extra;
+  let color, category, advice, tips;
+  if (extra <= 0) {
+    color = '#16A34A'; category = 'Your heart is younger than your age! ✓';
+    advice = `Your estimated heart age is ${heartAge} years — that's the same or younger than your actual age of ${age}. This is excellent! Your lifestyle choices are protecting your cardiovascular health.`;
+    tips = '💡 Keep it up! Continue your healthy habits to maintain a young, healthy heart.';
+  } else if (extra <= 5) {
+    color = '#F59E0B'; category = 'Slightly older than your actual age';
+    advice = `Your estimated heart age is ${heartAge} years — about ${extra} years older than your actual age of ${age}. There is room for improvement in your cardiovascular health.`;
+    tips = '💡 Focus on the risk factors flagged above. Even small changes — like reducing your BP, losing a few kg, or exercising more regularly — can significantly reduce your heart age.';
+  } else if (extra <= 12) {
+    color = '#EF4444'; category = 'Older than your actual age — take action';
+    advice = `Your estimated heart age is ${heartAge} years — about ${extra} years older than your actual age of ${age}. This suggests your heart is under more strain than it should be.`;
+    tips = '💡 Please discuss your cardiovascular risk with your GP. Lifestyle changes and possibly medication can help bring your heart age down significantly.';
+  } else {
+    color = '#DC2626'; category = 'Significantly older — urgent action needed';
+    advice = `Your estimated heart age is ${heartAge} years — about ${extra} years older than your actual age of ${age}. Multiple risk factors are significantly increasing your cardiovascular risk.`;
+    tips = '💡 Please see your GP as a priority. Multiple risk factors at this level require professional assessment and a structured management plan.';
+  }
+  document.getElementById('ha-result-header').style.background = color;
+  document.getElementById('ha-result-value').textContent = heartAge + ' yrs';
+  document.getElementById('ha-result-category').textContent = category;
+  document.getElementById('ha-result-body').innerHTML = `
+    <p>${advice}</p>
+    <div class="${extra > 5 ? 'result-warning' : 'result-tips'}"><p>${tips}</p></div>
+    <p style="margin-top:12px;font-size:13px;color:#6B7280;">This is an estimate based on established cardiovascular risk factors. For a full risk assessment, speak with your GP or practice nurse.</p>
+  `;
+  document.getElementById('ha-result').classList.add('show');
+  document.getElementById('ha-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ===== CV RISK =====
+function checkCVRisk() {
+  const age = parseInt(document.getElementById('cv-age').value);
+  const gender = document.getElementById('cv-gender').value;
+  const bp = parseInt(document.getElementById('cv-bp').value);
+  const bmi = parseFloat(document.getElementById('cv-bmi').value);
+  const smoke = document.getElementById('cv-smoke').value;
+  const diabetes = document.getElementById('cv-diabetes').value;
+  const exercise = document.getElementById('cv-exercise').value;
+  if (!age || !gender || !bp || !bmi) { alert('Please fill in all required fields.'); return; }
+  let score = 0;
+  if (age >= 70) score += 30;
+  else if (age >= 60) score += 22;
+  else if (age >= 50) score += 14;
+  else if (age >= 40) score += 7;
+  else score += 2;
+  if (gender === 'male') score += 8;
+  if (bp >= 180) score += 20;
+  else if (bp >= 160) score += 14;
+  else if (bp >= 140) score += 9;
+  else if (bp >= 130) score += 5;
+  else if (bp >= 120) score += 2;
+  if (bmi >= 35) score += 12;
+  else if (bmi >= 30) score += 8;
+  else if (bmi >= 25) score += 4;
+  if (smoke === 'yes') score += 18;
+  else if (smoke === 'ex') score += 6;
+  if (diabetes === 'yes') score += 15;
+  if (exercise === 'none') score += 10;
+  else if (exercise === 'some') score += 4;
+  const maxScore = 113;
+  const riskPct = Math.min(Math.round((score / maxScore) * 40), 40);
+  let color, category, advice, tips;
+  if (riskPct <= 5) {
+    color = '#16A34A'; category = 'Low Cardiovascular Risk';
+    advice = `Your estimated 10-year cardiovascular risk is low (approximately ${riskPct}%). This means you have a relatively low chance of experiencing a heart attack or stroke in the next 10 years based on your current risk profile.`;
+    tips = '💡 Maintain your healthy lifestyle. Regular check-ups, staying active, and eating well will keep your risk low as you age.';
+  } else if (riskPct <= 10) {
+    color = '#F59E0B'; category = 'Moderate Cardiovascular Risk';
+    advice = `Your estimated 10-year cardiovascular risk is moderate (approximately ${riskPct}%). This means some risk factors are present that could increase your chance of a cardiovascular event if not addressed.`;
+    tips = '💡 Focus on modifiable risk factors: blood pressure management, weight, smoking cessation, and regular exercise. Discuss your risk profile with your GP.';
+  } else if (riskPct <= 20) {
+    color = '#EF4444'; category = 'High Cardiovascular Risk';
+    advice = `Your estimated 10-year cardiovascular risk is high (approximately ${riskPct}%). Multiple risk factors are present that significantly increase your likelihood of a cardiovascular event.`;
+    tips = '💡 Medical review is recommended. Your GP may consider medication alongside lifestyle changes to reduce your risk. Do not delay seeking advice.';
+  } else {
+    color = '#DC2626'; category = 'Very High Cardiovascular Risk';
+    advice = `Your estimated 10-year cardiovascular risk is very high (approximately ${riskPct}%). This is a serious level of risk that requires prompt medical attention and comprehensive risk factor management.`;
+    tips = '💡 Please see your GP as a priority. A formal cardiovascular risk assessment, medication review, and structured lifestyle intervention plan are strongly recommended.';
+  }
+  document.getElementById('cv-result-header').style.background = color;
+  document.getElementById('cv-result-value').textContent = '~' + riskPct + '%';
+  document.getElementById('cv-result-category').textContent = category;
+  document.getElementById('cv-result-body').innerHTML = `
+    <p>${advice}</p>
+    <div class="${riskPct > 10 ? 'result-warning' : 'result-tips'}"><p>${tips}</p></div>
+    <p style="margin-top:12px;font-size:13px;color:#6B7280;">This is a simplified educational estimate. Clinical risk scores (QRISK3, Framingham) used by GPs incorporate additional data. Always seek a formal assessment from your healthcare provider.</p>
+  `;
+  document.getElementById('cv-result').classList.add('show');
+  document.getElementById('cv-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>
