@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -268,7 +268,8 @@ footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top
     <a href="sodium-heart.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🧂</span></div><div class="resource-card-body"><h3>Salt, Sodium &amp; Your Heart</h3><p>Too much sodium is a leading cause of high blood pressure. Learn how to reduce your intake.</p><span class="resource-tag">Nutrition</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
     <a href="stress-heart.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🧘</span></div><div class="resource-card-body"><h3>Stress &amp; Hypertension</h3><p>Chronic stress raises blood pressure. Explore practical stress management techniques.</p><span class="resource-tag">Mental Health</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
     <a href="warning-signs.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🚨</span></div><div class="resource-card-body"><h3>Warning Signs to Never Ignore</h3><p>Recognise symptoms of a hypertensive crisis, heart attack, and stroke.</p><span class="resource-tag">Emergency</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
-    <a href="understanding-cholesterol.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🫀</span></div><div class="resource-card-body"><h3>Understanding Cholesterol</h3><p>Learn the difference between good and bad cholesterol and how to keep your heart healthy.</p><span class="resource-tag">Heart Health</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a> 
+    <a href="understanding-cholesterol.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🩸</span></div><div class="resource-card-body"><h3>Understanding Cholesterol</h3><p>Learn the difference between good and bad cholesterol and how to protect your heart.</p><span class="resource-tag">Heart Health</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
+    <a href="health-tools.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top" style="background:linear-gradient(135deg,#96281B,#C0392B)"><span>🛠️</span></div><div class="resource-card-body"><h3>Free Health Tools &amp; Calculators</h3><p>Check your blood pressure, BMI, heart rate, heart age, and cardiovascular risk score instantly.</p><span class="resource-tag">Interactive</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Use Tools →</div></div></a>
   </div>
 </section>
 
@@ -309,10 +310,6 @@ footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top
       <button class="suggestion" onclick="sendSuggestion('What is the DASH diet?')">🥦 DASH diet</button>
       <button class="suggestion" onclick="sendSuggestion('What are the signs of a heart attack?')">🚨 Heart attack signs</button>
     </div>
-    <div style="padding:10px 20px;background:#fff;border-top:1px solid #FFD5CC;display:flex;gap:10px;">
-  <button onclick="copyChat()" style="flex:1;background:#fff;border:2px solid #C0392B;color:#C0392B;padding:10px;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;">📋 Copy Conversation</button>
-  <button onclick="shareWhatsApp()" style="flex:1;background:#25D366;border:none;color:#fff;padding:10px;border-radius:25px;font-size:13px;font-weight:600;cursor:pointer;">💬 Share on WhatsApp</button>
-</div>
     <div class="chat-input-area">
       <input class="chat-input" id="chat-input" type="text" placeholder="Ask Uncle Heart about your heart health..." onkeydown="if(event.key==='Enter')sendMessage()"/>
       <button class="send-btn" onclick="sendMessage()">➤</button>
@@ -439,7 +436,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // UNCLE HEART AI
-const API_URL = "/.netlify/functions/chat";
+const API_URL = "https://api.anthropic.com/v1/messages";
 const SYSTEM = `You are Uncle Heart, a warm, friendly, and knowledgeable health educator from Global Hypertension Helpline. You speak in a friendly, approachable way — like a caring uncle who happens to know everything about health. You specialise in:
 - Hypertension and blood pressure management
 - Cardiac health and heart disease prevention  
@@ -463,10 +460,15 @@ async function sendMessage() {
   try {
     const res = await fetch(API_URL, {
       method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({system:SYSTEM, messages})
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':'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',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:1000, system:SYSTEM, messages})
     });
-    const data = await res.json();    
+    const data = await res.json();
     const reply = data.content?.[0]?.text || "Hmm, I had a little hiccup there! Try asking me again 😊";
     typing.remove();
     addMsg('bot', reply);
@@ -532,29 +534,7 @@ function addTyping() {
 }
 
 // CONTACT FORM
-  function copyChat() {
-  const msgs = document.querySelectorAll('.msg-bubble');
-  let text = 'My Uncle Heart Conversation:\n\n';
-  document.querySelectorAll('.msg').forEach(m => {
-    const name = m.classList.contains('bot') ? 'Uncle Heart' : 'Me';
-    const bubble = m.querySelector('.msg-bubble');
-    if(bubble) text += name + ': ' + bubble.innerText + '\n\n';
-  });
-  navigator.clipboard.writeText(text);
-  alert('Conversation copied! You can now paste it anywhere 📋');
-}
-function shareWhatsApp() {
-  const msgs = document.querySelectorAll('.msg');
-  let text = '🫀 My Uncle Heart Health Conversation:\n\n';
-  msgs.forEach(m => {
-    const name = m.classList.contains('bot') ? 'Uncle Heart' : 'Me';
-    const bubble = m.querySelector('.msg-bubble');
-    if(bubble) text += name + ': ' + bubble.innerText + '\n\n';
-  });
-  text += 'Get free health advice at globalhypertensionhelpline.com';
-  window.open('https://wa.me/?text=' + encodeURIComponent(text));
-}
-  function submitForm() {
+function submitForm() {
   const name = document.getElementById('fname').value.trim();
   const email = document.getElementById('femail').value.trim();
   const subject = document.getElementById('fsubject').value.trim();
