@@ -168,7 +168,32 @@ footer p{font-size:13px;font-weight:300;line-height:1.6;max-width:500px;margin:0
 footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top:1px solid rgba(255,255,255,0.1);padding-top:16px}
 .wa-float{position:fixed;bottom:30px;right:30px;z-index:999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 20px rgba(37,211,102,0.5);text-decoration:none;animation:bounce 2s ease-in-out infinite;transition:transform 0.3s}
 .wa-float:hover{transform:scale(1.15)}
-@media(max-width:700px){.about-grid,.contact-grid{grid-template-columns:1fr}.about-img-side{display:none}.hero h1{font-size:28px}nav{padding:10px 16px}section{padding:50px 20px}.stats{gap:30px}.uncle-intro{flex-direction:column;text-align:center}}
+.health-tools{background:var(--off)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:40px}
+.tool-card{background:#fff;border-radius:14px;padding:28px;border:1px solid #eee;box-shadow:0 2px 12px rgba(192,57,43,0.07);transition:all 0.3s}
+.tool-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(192,57,43,0.12)}
+.tool-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.tool-emoji{font-size:32px;width:52px;height:52px;background:var(--red-light);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tool-header h3{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
+.tool-header p{font-size:13px;color:var(--gray);line-height:1.5;margin:0}
+.tool-inputs{display:grid;gap:12px;margin-bottom:16px}
+.tool-inputs label{font-size:13px;font-weight:600;color:#1a1a1a;display:block;margin-bottom:5px}
+.tool-inputs input,.tool-inputs select{width:100%;border:2px solid #e0e0e0;border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;outline:none;transition:border-color 0.3s}
+.tool-inputs input:focus,.tool-inputs select:focus{border-color:var(--red)}
+.tool-btn{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border:none;padding:12px 24px;border-radius:25px;font-size:14px;font-weight:600;cursor:pointer;width:100%;font-family:inherit;transition:all 0.3s;box-shadow:0 4px 15px rgba(192,57,43,0.3)}
+.tool-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(192,57,43,0.4)}
+.tool-result{display:none;margin-top:16px;border-radius:10px;overflow:hidden}
+.tool-result.show{display:block}
+.result-header{padding:14px 18px;display:flex;align-items:center;gap:12px}
+.result-value{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff}
+.result-category{font-size:13px;font-weight:600;color:rgba(255,255,255,0.9)}
+.result-body{padding:16px 18px;background:#FDF8F8;border:1px solid #FADBD8;border-top:0}
+.result-body p{font-size:14px;color:#1a1a1a;line-height:1.7;margin-bottom:10px}
+.result-tips{background:#FEF9E7;border-radius:8px;padding:12px;margin-top:10px;font-size:13px;color:#7D6608}
+.result-warning{background:#FDEDEC;border-radius:8px;padding:12px;margin-top:10px;font-size:13px;color:#7B241C}
+.tools-disclaimer{background:#FFF0ED;border:1px solid #FADBD8;border-radius:10px;padding:14px 18px;font-size:13px;color:#7B241C;margin-bottom:30px;text-align:center}
+.tools-phase-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:16px;margin-top:32px;display:block}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -187,11 +212,12 @@ footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top
     <a href="#about">About Us</a>
     <a href="#features">What We Do</a>
     <a href="#resources">Resources</a>
+    <a href="#health-tools">Health Tools</a>
     <a href="#uncle-heart">Ask Uncle Heart</a>
-  <a href="#contact">Contact</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
-  
+
 <div class="hero">
   <canvas id="particles"></canvas>
   <div class="hero-content">
@@ -269,6 +295,214 @@ footer small{font-size:11px;opacity:0.6;display:block;margin-top:20px;border-top
     <a href="stress-heart.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🧘</span></div><div class="resource-card-body"><h3>Stress &amp; Hypertension</h3><p>Chronic stress raises blood pressure. Explore practical stress management techniques.</p><span class="resource-tag">Mental Health</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
     <a href="warning-signs.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🚨</span></div><div class="resource-card-body"><h3>Warning Signs to Never Ignore</h3><p>Recognise symptoms of a hypertensive crisis, heart attack, and stroke.</p><span class="resource-tag">Emergency</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
     <a href="understanding-cholesterol.html" class="resource-card reveal" style="text-decoration:none"><div class="resource-card-top"><span>🧬</span></div><div class="resource-card-body"><h3>Understanding Cholesterol</h3><p>Learn about LDL, HDL, what your numbers mean and how to keep your cholesterol healthy.</p><span class="resource-tag">Heart Health</span><div style="color:#C0392B;font-size:13px;font-weight:600;margin-top:10px">Read Article →</div></div></a>
+  </div>
+</section>
+
+
+<section id="health-tools" class="health-tools">
+  <div style="padding:80px 40px">
+  <div class="section-tag">Free Interactive Tools</div>
+  <h2 class="section-title">Health Calculators & Checkers</h2>
+  <p style="color:var(--gray);font-size:15px;margin-bottom:24px;font-weight:300;max-width:600px">Use our evidence-based tools to understand your health numbers and get personalised guidance.</p>
+  <div class="tools-disclaimer">⚕️ <strong>Medical Disclaimer:</strong> These tools are for educational purposes only and do not replace professional medical advice. Always consult your GP or healthcare provider.</div>
+
+  <span class="tools-phase-label">❤️ Cardiovascular Core</span>
+  <div class="tools-grid">
+
+    <!-- BLOOD PRESSURE -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🩺</div>
+        <div><h3>Blood Pressure Checker</h3><p>Enter your reading to find out what it means</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Systolic (top number)</label><input type="number" id="bp-sys" placeholder="e.g. 120" min="60" max="260"></div>
+        <div><label>Diastolic (bottom number)</label><input type="number" id="bp-dia" placeholder="e.g. 80" min="40" max="160"></div>
+      </div>
+      <button class="tool-btn" onclick="checkBP()">Check My Blood Pressure</button>
+      <div class="tool-result" id="bp-result">
+        <div class="result-header" id="bp-header"><div><div class="result-value" id="bp-value"></div><div class="result-category" id="bp-cat"></div></div></div>
+        <div class="result-body" id="bp-body"></div>
+      </div>
+    </div>
+
+    <!-- BMI -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">⚖️</div>
+        <div><h3>BMI Calculator</h3><p>Calculate your Body Mass Index and what it means for heart health</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Height (cm)</label><input type="number" id="bmi-h" placeholder="e.g. 170" min="100" max="250"></div>
+        <div><label>Weight (kg)</label><input type="number" id="bmi-w" placeholder="e.g. 75" min="20" max="300"></div>
+      </div>
+      <button class="tool-btn" onclick="checkBMI()">Calculate My BMI</button>
+      <div class="tool-result" id="bmi-result">
+        <div class="result-header" id="bmi-header"><div><div class="result-value" id="bmi-value"></div><div class="result-category" id="bmi-cat"></div></div></div>
+        <div class="result-body" id="bmi-body"></div>
+      </div>
+    </div>
+
+    <!-- HEART RATE -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">💓</div>
+        <div><h3>Heart Rate Checker</h3><p>Check your resting heart rate and exercise zones</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Resting Heart Rate (BPM)</label><input type="number" id="hr-bpm" placeholder="e.g. 70" min="20" max="220"></div>
+        <div><label>Age (for exercise zones)</label><input type="number" id="hr-age" placeholder="e.g. 45" min="10" max="100"></div>
+      </div>
+      <button class="tool-btn" onclick="checkHR()">Check My Heart Rate</button>
+      <div class="tool-result" id="hr-result">
+        <div class="result-header" id="hr-header"><div><div class="result-value" id="hr-value"></div><div class="result-category" id="hr-cat"></div></div></div>
+        <div class="result-body" id="hr-body"></div>
+      </div>
+    </div>
+
+    <!-- HEART AGE -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🫀</div>
+        <div><h3>Heart Age Calculator</h3><p>Estimate your heart's biological age based on key risk factors</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Your Age</label><input type="number" id="ha-age" placeholder="e.g. 50" min="18" max="90"></div>
+        <div><label>Systolic BP</label><input type="number" id="ha-bp" placeholder="e.g. 130" min="80" max="220"></div>
+        <div><label>Do you smoke?</label><select id="ha-smoke"><option value="">Select</option><option value="no">No</option><option value="ex">Ex-smoker</option><option value="yes">Current smoker</option></select></div>
+        <div><label>Activity level</label><select id="ha-active"><option value="">Select</option><option value="active">Active (150+ mins/week)</option><option value="some">Somewhat active</option><option value="none">Inactive</option></select></div>
+        <div><label>Do you have diabetes?</label><select id="ha-diabetes"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Family history of heart disease?</label><select id="ha-family"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Sex</label><select id="ha-gender"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkHeartAge()">Calculate My Heart Age</button>
+      <div class="tool-result" id="ha-result">
+        <div class="result-header" id="ha-header"><div><div class="result-value" id="ha-value"></div><div class="result-category" id="ha-cat"></div></div></div>
+        <div class="result-body" id="ha-body"></div>
+      </div>
+    </div>
+
+    <!-- CV RISK -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">📊</div>
+        <div><h3>Cardiovascular Risk Score</h3><p>Estimate your 10-year risk of a cardiovascular event</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Age</label><input type="number" id="cv-age" placeholder="e.g. 55" min="18" max="90"></div>
+        <div><label>Sex</label><select id="cv-gender"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div><label>Systolic BP</label><input type="number" id="cv-bp" placeholder="e.g. 130" min="80" max="220"></div>
+        <div><label>BMI</label><input type="number" id="cv-bmi" placeholder="e.g. 27" step="0.1" min="10" max="60"></div>
+        <div><label>Do you smoke?</label><select id="cv-smoke"><option value="">Select</option><option value="no">No</option><option value="ex">Ex-smoker</option><option value="yes">Current smoker</option></select></div>
+        <div><label>Do you have diabetes?</label><select id="cv-diabetes"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Exercise level</label><select id="cv-exercise"><option value="">Select</option><option value="active">Active</option><option value="some">Some</option><option value="none">None</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkCVRisk()">Calculate My CV Risk</button>
+      <div class="tool-result" id="cv-result">
+        <div class="result-header" id="cv-header"><div><div class="result-value" id="cv-value"></div><div class="result-category" id="cv-cat"></div></div></div>
+        <div class="result-body" id="cv-body"></div>
+      </div>
+    </div>
+
+    <!-- CHOLESTEROL -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🩸</div>
+        <div><h3>Cholesterol Risk Checker</h3><p>Find out whether your cholesterol levels are putting your heart at risk</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Total Cholesterol (mmol/L)</label><input type="number" id="ch-total" placeholder="e.g. 5.2" step="0.1" min="1" max="15"></div>
+        <div><label>HDL (mmol/L) <span style="font-weight:300;color:#999">optional</span></label><input type="number" id="ch-hdl" placeholder="e.g. 1.3" step="0.1" min="0.1" max="5"></div>
+        <div><label>Do you have diabetes?</label><select id="ch-diabetes"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Do you smoke?</label><select id="ch-smoke"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkCholesterol()">Check My Cholesterol Risk</button>
+      <div class="tool-result" id="ch-result">
+        <div class="result-header" id="ch-header"><div><div class="result-value" id="ch-value"></div><div class="result-category" id="ch-cat"></div></div></div>
+        <div class="result-body" id="ch-body"></div>
+      </div>
+    </div>
+
+    <!-- DIABETES RISK -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🍬</div>
+        <div><h3>Type 2 Diabetes Risk</h3><p>Assess your risk of developing type 2 diabetes — a major cardiovascular risk factor</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Age</label><input type="number" id="db-age" placeholder="e.g. 45" min="18" max="100"></div>
+        <div><label>BMI</label><input type="number" id="db-bmi" placeholder="e.g. 27.5" step="0.1" min="10" max="60"></div>
+        <div><label>Family history of diabetes?</label><select id="db-family"><option value="">Select</option><option value="no">No</option><option value="parent">Parent or sibling</option><option value="extended">Extended family only</option></select></div>
+        <div><label>Physical activity level</label><select id="db-activity"><option value="">Select</option><option value="active">Active (150+ mins/week)</option><option value="some">Somewhat active</option><option value="none">Inactive</option></select></div>
+        <div><label>History of high blood pressure?</label><select id="db-bp"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkDiabetes()">Check My Diabetes Risk</button>
+      <div class="tool-result" id="db-result">
+        <div class="result-header" id="db-header"><div><div class="result-value" id="db-value"></div><div class="result-category" id="db-cat"></div></div></div>
+        <div class="result-body" id="db-body"></div>
+      </div>
+    </div>
+
+    <!-- STROKE RISK -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🧠</div>
+        <div><h3>Stroke Risk Checker</h3><p>Understand your risk of stroke based on key lifestyle and medical factors</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Age</label><input type="number" id="st-age" placeholder="e.g. 55" min="18" max="100"></div>
+        <div><label>Systolic Blood Pressure</label><input type="number" id="st-bp" placeholder="e.g. 130" min="60" max="260"></div>
+        <div><label>Do you smoke?</label><select id="st-smoke"><option value="">Select</option><option value="no">No</option><option value="ex">Ex-smoker</option><option value="yes">Current smoker</option></select></div>
+        <div><label>Atrial fibrillation (irregular heartbeat)?</label><select id="st-af"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Do you have diabetes?</label><select id="st-diabetes"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+        <div><label>Previous TIA or stroke?</label><select id="st-prev"><option value="">Select</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkStroke()">Check My Stroke Risk</button>
+      <div class="tool-result" id="st-result">
+        <div class="result-header" id="st-header"><div><div class="result-value" id="st-value"></div><div class="result-category" id="st-cat"></div></div></div>
+        <div class="result-body" id="st-body"></div>
+      </div>
+    </div>
+
+    <!-- WAIST TO HIP -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">📏</div>
+        <div><h3>Waist-to-Hip Ratio</h3><p>Abdominal fat is a key cardiovascular risk factor — find out where you stand</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Waist Circumference (cm) — at navel</label><input type="number" id="whr-waist" placeholder="e.g. 88" min="40" max="200"></div>
+        <div><label>Hip Circumference (cm) — widest point</label><input type="number" id="whr-hip" placeholder="e.g. 100" min="40" max="200"></div>
+        <div><label>Sex</label><select id="whr-sex"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkWHR()">Calculate My Ratio</button>
+      <div class="tool-result" id="whr-result">
+        <div class="result-header" id="whr-header"><div><div class="result-value" id="whr-value"></div><div class="result-category" id="whr-cat"></div></div></div>
+        <div class="result-body" id="whr-body"></div>
+      </div>
+    </div>
+
+    <!-- CALORIE NEEDS -->
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-emoji">🔥</div>
+        <div><h3>Daily Calorie Needs</h3><p>Calculate how many calories your body needs each day</p></div>
+      </div>
+      <div class="tool-inputs">
+        <div><label>Age</label><input type="number" id="cal-age" placeholder="e.g. 40" min="18" max="100"></div>
+        <div><label>Sex</label><select id="cal-sex"><option value="">Select</option><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div><label>Weight (kg)</label><input type="number" id="cal-weight" placeholder="e.g. 75" min="30" max="300"></div>
+        <div><label>Height (cm)</label><input type="number" id="cal-height" placeholder="e.g. 170" min="100" max="250"></div>
+        <div><label>Activity Level</label><select id="cal-activity"><option value="">Select</option><option value="1.2">Sedentary</option><option value="1.375">Lightly active</option><option value="1.55">Moderately active</option><option value="1.725">Very active</option><option value="1.9">Extremely active</option></select></div>
+      </div>
+      <button class="tool-btn" onclick="checkCalories()">Calculate My Calories</button>
+      <div class="tool-result" id="cal-result">
+        <div class="result-header" id="cal-header"><div><div class="result-value" id="cal-value"></div><div class="result-category" id="cal-cat"></div></div></div>
+        <div class="result-body" id="cal-body"></div>
+      </div>
+    </div>
+
+  </div><!-- end tools-grid -->
   </div>
 </section>
 
@@ -571,6 +805,204 @@ function submitForm() {
   document.getElementById('fsubject').value = '';
   document.getElementById('fmessage').value = '';
 }
+
+// ===== HEALTH TOOLS =====
+function showResult(id,color,value,category,body){
+  const r=document.getElementById(id+'-result');
+  document.getElementById(id+'-header').style.background=color;
+  document.getElementById(id+'-value').textContent=value;
+  document.getElementById(id+'-cat').textContent=category;
+  document.getElementById(id+'-body').innerHTML=body;
+  r.classList.add('show');
+  r.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function checkBP(){
+  const s=parseInt(document.getElementById('bp-sys').value);
+  const d=parseInt(document.getElementById('bp-dia').value);
+  if(!s||!d){alert('Please enter both values.');return;}
+  let color,cat,adv,tip;
+  if(s<90||d<60){color='#2471A3';cat='Low Blood Pressure';adv='Your reading is below normal. Low BP can cause dizziness and fainting.';tip='💡 Stay hydrated, avoid standing up quickly, and see your GP if symptoms occur.';}
+  else if(s<=120&&d<=80){color='#1A7A4A';cat='Ideal Blood Pressure ✓';adv='Excellent! Your blood pressure is in the ideal range, associated with lowest cardiovascular risk.';tip='💡 Keep it up! Regular exercise, a balanced diet and a healthy weight will maintain this.';}
+  else if(s<=129&&d<=84){color='#2E86C1';cat='Normal Blood Pressure';adv='Your blood pressure is within a normal range. Keep maintaining healthy habits.';tip='💡 Regular monitoring and a low-salt diet will help keep your numbers here.';}
+  else if(s<=139||d<=89){color='#D4AC0D';cat='Pre-Hypertension — Take Action';adv='This is slightly elevated and a warning sign. Lifestyle changes now can prevent hypertension.';tip='💡 Reduce salt, increase exercise, maintain a healthy weight and limit alcohol.';}
+  else if(s<=159||d<=99){color='#E67E22';cat='Stage 1 Hypertension';adv='Your BP is high. This increases risk of heart disease, stroke and kidney problems.';tip='💡 Lifestyle changes are essential. Your GP may also recommend medication.';}
+  else if(s<=179||d<=109){color='#C0392B';cat='Stage 2 Hypertension — See Your GP';adv='Significantly elevated blood pressure. Medical attention and treatment are needed.';tip='💡 Seek medical review promptly. Medication is usually required alongside lifestyle changes.';}
+  else{color='#6C3483';cat='Hypertensive Crisis — Seek Help Now';adv='This is dangerously high. A hypertensive crisis requires immediate medical attention.';tip='⚠️ Call your GP or 111 immediately. Do not delay — this level greatly increases risk of heart attack and stroke.';}
+  showResult('bp',color,s+'/'+d,'mmHg — '+cat,`<p>${adv}</p><div class="${s>=160?'result-warning':'result-tips'}"><p>${tip}</p></div>`);
+}
+
+function checkBMI(){
+  const h=parseFloat(document.getElementById('bmi-h').value);
+  const w=parseFloat(document.getElementById('bmi-w').value);
+  if(!h||!w){alert('Please enter height and weight.');return;}
+  const bmi=(w/((h/100)**2)).toFixed(1);
+  let color,cat,adv,tip;
+  if(bmi<18.5){color='#2471A3';cat='Underweight';adv=`Your BMI of ${bmi} is below the healthy range. Being underweight can affect energy levels and immunity.`;tip='💡 Focus on nutrient-dense foods. Speak with your GP or a dietitian for guidance.';}
+  else if(bmi<25){color='#1A7A4A';cat='Healthy Weight ✓';adv=`Your BMI of ${bmi} is within the healthy range — associated with lower risk of heart disease and hypertension. Well done!`;tip='💡 Maintain your healthy habits with regular exercise and a balanced diet.';}
+  else if(bmi<30){color='#D4AC0D';cat='Overweight';adv=`Your BMI of ${bmi} places you in the overweight category. Excess weight raises risk of high blood pressure, heart disease and diabetes.`;tip='💡 Aim for gradual weight loss of 0.5–1kg per week. Even 5–10% weight loss significantly reduces cardiovascular risk.';}
+  else if(bmi<35){color='#E67E22';cat='Obese — Class I';adv=`Your BMI of ${bmi} indicates Class I obesity, which significantly raises cardiovascular risk.`;tip='💡 Medical guidance is recommended. Diet changes, regular exercise and GP support can help.';}
+  else{color='#C0392B';cat='Obese — Class II/III';adv=`Your BMI of ${bmi} indicates significant obesity. This is associated with high risk of heart disease, stroke and diabetes.`;tip='💡 Please speak with your GP. A structured weight management plan involving diet, exercise and possibly medication is recommended.';}
+  showResult('bmi',color,bmi,'kg/m² — '+cat,`<p>${adv}</p><div class="${bmi>=30?'result-warning':'result-tips'}"><p>${tip}</p></div><p style="margin-top:10px;font-size:12px;color:#999">BMI is a screening tool. It does not account for muscle mass, age or ethnicity.</p>`);
+}
+
+function checkHR(){
+  const hr=parseInt(document.getElementById('hr-bpm').value);
+  const age=parseInt(document.getElementById('hr-age').value);
+  if(!hr){alert('Please enter your heart rate.');return;}
+  let color,cat,adv,tip;
+  if(hr<40){color='#6C3483';cat='Very Low — See Your GP';adv='A resting heart rate below 40 BPM is unusually low and may need medical evaluation.';tip='💡 Unless you are an elite athlete, please see your GP.';}
+  else if(hr<60){color='#2471A3';cat='Athletic / Low Normal';adv=`Your resting heart rate of ${hr} BPM is lower than average, which is common in fit individuals.`;tip='💡 If you are active and feel well, this is a positive sign of cardiovascular fitness.';}
+  else if(hr<=100){color='#1A7A4A';cat='Normal Resting Heart Rate ✓';adv=`Your resting heart rate of ${hr} BPM is within the normal range (60–100 BPM).`;tip='💡 Regular aerobic exercise will help maintain or lower your resting heart rate over time.';}
+  else{color='#C0392B';cat='Elevated — Take Note';adv=`Your resting heart rate of ${hr} BPM is above normal. This may be due to stress, caffeine, dehydration or an underlying condition.`;tip='💡 Monitor over several days. If consistently high, see your GP for an assessment.';}
+  let zones='';
+  if(age){const mx=220-age;zones=`<div style="margin-top:12px;padding:12px;background:#FDF8F8;border-radius:8px;font-size:13px"><strong>Target Heart Rate Zones (age ${age}):</strong><br>🔵 Fat Burn (50–60%): ${Math.round(mx*0.5)}–${Math.round(mx*0.6)} BPM<br>🟡 Cardio (60–70%): ${Math.round(mx*0.6)}–${Math.round(mx*0.7)} BPM<br>🔴 Peak (70–85%): ${Math.round(mx*0.7)}–${Math.round(mx*0.85)} BPM</div>`;}
+  showResult('hr',color,hr+' BPM',cat,`<p>${adv}</p><div class="${hr>100?'result-warning':'result-tips'}"><p>${tip}</p></div>${zones}`);
+}
+
+function checkHeartAge(){
+  const age=parseInt(document.getElementById('ha-age').value);
+  const bp=parseInt(document.getElementById('ha-bp').value);
+  const smoke=document.getElementById('ha-smoke').value;
+  const active=document.getElementById('ha-active').value;
+  const diabetes=document.getElementById('ha-diabetes').value;
+  const family=document.getElementById('ha-family').value;
+  const gender=document.getElementById('ha-gender').value;
+  if(!age||!bp){alert('Please fill in all required fields.');return;}
+  let extra=0;
+  if(bp>=160)extra+=8;else if(bp>=140)extra+=5;else if(bp>=130)extra+=2;
+  if(smoke==='yes')extra+=8;else if(smoke==='ex')extra+=3;
+  if(active==='none')extra+=4;else if(active==='some')extra+=1;
+  if(diabetes==='yes')extra+=6;
+  if(family==='yes')extra+=3;
+  if(gender==='male')extra+=2;
+  const heartAge=age+extra;
+  let color,cat,adv,tip;
+  if(extra<=0){color='#1A7A4A';cat='Heart younger than your age! ✓';adv=`Your estimated heart age is ${heartAge} — same or younger than your actual age. Your lifestyle is protecting your cardiovascular health.`;tip='💡 Keep it up! Continue your healthy habits.';}
+  else if(extra<=5){color='#D4AC0D';cat='Slightly older than your age';adv=`Your estimated heart age is ${heartAge} — about ${extra} years older than ${age}. There is room for improvement.`;tip='💡 Small changes like reducing BP, exercising more and stopping smoking can significantly lower your heart age.';}
+  else if(extra<=12){color='#E67E22';cat='Older than your age — take action';adv=`Your estimated heart age is ${heartAge} — about ${extra} years older than ${age}. Your heart is under more strain than it should be.`;tip='💡 Discuss your cardiovascular risk with your GP. Lifestyle changes and possibly medication can help.';}
+  else{color='#C0392B';cat='Significantly older — urgent action needed';adv=`Your estimated heart age is ${heartAge} — about ${extra} years older than ${age}. Multiple risk factors are significantly elevating your risk.`;tip='💡 Please see your GP as a priority for a full cardiovascular assessment.';}
+  showResult('ha',color,heartAge+' yrs',cat,`<p>${adv}</p><div class="${extra>5?'result-warning':'result-tips'}"><p>${tip}</p></div><p style="margin-top:10px;font-size:12px;color:#999">This is an educational estimate only. For a formal assessment, speak with your GP or practice nurse.</p>`);
+}
+
+function checkCVRisk(){
+  const age=parseInt(document.getElementById('cv-age').value);
+  const gender=document.getElementById('cv-gender').value;
+  const bp=parseInt(document.getElementById('cv-bp').value);
+  const bmi=parseFloat(document.getElementById('cv-bmi').value);
+  const smoke=document.getElementById('cv-smoke').value;
+  const diabetes=document.getElementById('cv-diabetes').value;
+  const exercise=document.getElementById('cv-exercise').value;
+  if(!age||!bp||!bmi){alert('Please fill in all required fields.');return;}
+  let score=0;
+  if(age>=70)score+=30;else if(age>=60)score+=22;else if(age>=50)score+=14;else if(age>=40)score+=7;else score+=2;
+  if(gender==='male')score+=8;
+  if(bp>=180)score+=20;else if(bp>=160)score+=14;else if(bp>=140)score+=9;else if(bp>=130)score+=5;else if(bp>=120)score+=2;
+  if(bmi>=35)score+=12;else if(bmi>=30)score+=8;else if(bmi>=25)score+=4;
+  if(smoke==='yes')score+=18;else if(smoke==='ex')score+=6;
+  if(diabetes==='yes')score+=15;
+  if(exercise==='none')score+=10;else if(exercise==='some')score+=4;
+  const riskPct=Math.min(Math.round((score/113)*40),40);
+  let color,cat,adv,tip;
+  if(riskPct<=5){color='#1A7A4A';cat='Low Cardiovascular Risk';adv=`Your estimated 10-year CV risk is low (~${riskPct}%). You have a relatively low chance of a cardiovascular event based on current risk factors.`;tip='💡 Maintain healthy habits. Regular check-ups, staying active and eating well will keep your risk low as you age.';}
+  else if(riskPct<=10){color='#D4AC0D';cat='Moderate Cardiovascular Risk';adv=`Your estimated 10-year CV risk is moderate (~${riskPct}%). Some risk factors are present that could increase your chance of a cardiovascular event.`;tip='💡 Focus on BP management, weight, smoking cessation and regular exercise. Discuss your risk with your GP.';}
+  else if(riskPct<=20){color='#E67E22';cat='High Cardiovascular Risk';adv=`Your estimated 10-year CV risk is high (~${riskPct}%). Multiple risk factors significantly increase your likelihood of a cardiovascular event.`;tip='💡 Medical review is recommended. Your GP may consider medication alongside lifestyle changes.';}
+  else{color='#C0392B';cat='Very High Cardiovascular Risk';adv=`Your estimated 10-year CV risk is very high (~${riskPct}%). This requires prompt medical attention.`;tip='💡 Please see your GP as a priority. A formal risk assessment, medication review and lifestyle plan are strongly recommended.';}
+  showResult('cv',color,'~'+riskPct+'%',cat,`<p>${adv}</p><div class="${riskPct>10?'result-warning':'result-tips'}"><p>${tip}</p></div><p style="margin-top:10px;font-size:12px;color:#999">This is a simplified educational estimate. Clinical scores (QRISK3) used by GPs incorporate more data. Always seek a formal assessment.</p>`);
+}
+
+function checkCholesterol(){
+  const total=parseFloat(document.getElementById('ch-total').value);
+  const hdl=parseFloat(document.getElementById('ch-hdl').value)||0;
+  const diabetes=document.getElementById('ch-diabetes').value;
+  const smoke=document.getElementById('ch-smoke').value;
+  if(!total){alert('Please enter your total cholesterol.');return;}
+  let extra=diabetes==='yes'?1:0;
+  extra+=smoke==='yes'?1:0;
+  let color,cat,adv,tip;
+  const adj=total+(extra*0.5);
+  if(adj<5){color='#1A7A4A';cat='Desirable Cholesterol ✓';adv=`A total cholesterol of ${total} mmol/L is within a desirable range for cardiovascular health.`;tip='💡 Maintain a heart-healthy diet low in saturated fat, exercise regularly and avoid smoking.';}
+  else if(adj<6.2){color='#D4AC0D';cat='Borderline High Cholesterol';adv=`A total of ${total} mmol/L is borderline high. With additional risk factors, this requires attention.`;tip='💡 Reduce saturated fat, increase fibre (oats, pulses), exercise more and discuss with your GP.';}
+  else{color='#C0392B';cat='High Cholesterol — See Your GP';adv=`A total cholesterol of ${total} mmol/L is high and significantly raises cardiovascular risk.`;tip='💡 Medical review is recommended. Lifestyle changes and cholesterol-lowering medication (statins) may be advised.';}
+  const hdlNote=hdl?`<p style="font-size:13px;color:#666;margin-top:8px">Your HDL of ${hdl} mmol/L — ${hdl>=1.0?'within':'below'} the recommended level (≥1.0 mmol/L for men, ≥1.2 for women).</p>`:'';
+  showResult('ch',color,total+' mmol/L',cat,`<p>${adv}</p><div class="${adj>=6.2?'result-warning':'result-tips'}"><p>${tip}</p></div>${hdlNote}`);
+}
+
+function checkDiabetes(){
+  const age=parseInt(document.getElementById('db-age').value);
+  const bmi=parseFloat(document.getElementById('db-bmi').value);
+  const family=document.getElementById('db-family').value;
+  const activity=document.getElementById('db-activity').value;
+  const bp=document.getElementById('db-bp').value;
+  if(!age||!bmi){alert('Please enter age and BMI.');return;}
+  let score=0;
+  if(age>=65)score+=3;else if(age>=50)score+=2;else if(age>=40)score+=1;
+  if(bmi>=35)score+=3;else if(bmi>=30)score+=2;else if(bmi>=25)score+=1;
+  if(family==='parent')score+=3;else if(family==='extended')score+=1;
+  if(activity==='none')score+=2;else if(activity==='some')score+=1;
+  if(bp==='yes')score+=2;
+  let color,cat,adv,tip;
+  if(score<=2){color='#1A7A4A';cat='Low Risk';adv='Your current risk factors suggest a relatively low risk of developing type 2 diabetes.';tip='💡 Maintain a healthy weight, stay active and eat a balanced diet to keep your risk low.';}
+  else if(score<=5){color='#D4AC0D';cat='Moderate Risk';adv='Some risk factors suggest a moderate risk. Lifestyle changes now can significantly reduce your chances.';tip='💡 Aim for regular physical activity, reduce sugar and refined carbohydrate intake, and maintain a healthy weight.';}
+  else{color='#C0392B';cat='High Risk — Speak to Your GP';adv='Multiple risk factors suggest a high risk of developing type 2 diabetes. Early intervention is key.';tip='💡 Speak to your GP about a formal diabetes risk assessment. A structured lifestyle programme can reduce risk by up to 60%.';}
+  showResult('db',color,['Low','Moderate','High'][score<=2?0:score<=5?1:2]+' Risk',cat,`<p>${adv}</p><div class="${score>5?'result-warning':'result-tips'}"><p>${tip}</p></div><p style="margin-top:10px;font-size:12px;color:#999">This tool screens for risk factors only. A formal diagnosis requires a blood test.</p>`);
+}
+
+function checkStroke(){
+  const age=parseInt(document.getElementById('st-age').value);
+  const bp=parseInt(document.getElementById('st-bp').value);
+  const smoke=document.getElementById('st-smoke').value;
+  const af=document.getElementById('st-af').value;
+  const diabetes=document.getElementById('st-diabetes').value;
+  const prev=document.getElementById('st-prev').value;
+  if(!age||!bp){alert('Please enter age and blood pressure.');return;}
+  let score=0;
+  if(age>=80)score+=6;else if(age>=75)score+=5;else if(age>=65)score+=4;else if(age>=55)score+=3;else if(age>=45)score+=2;else score+=1;
+  if(bp>=180)score+=4;else if(bp>=160)score+=3;else if(bp>=140)score+=2;else if(bp>=130)score+=1;
+  if(smoke==='yes')score+=4;else if(smoke==='ex')score+=2;
+  if(af==='yes')score+=5;
+  if(diabetes==='yes')score+=3;
+  if(prev==='yes')score+=8;
+  let color,cat,adv,tip;
+  if(score<=5){color='#1A7A4A';cat='Low Stroke Risk';adv='Your risk factors suggest a relatively low risk of stroke at this time.';tip='💡 Maintain a healthy blood pressure, stay active, and avoid smoking to keep your risk low.';}
+  else if(score<=10){color='#D4AC0D';cat='Moderate Stroke Risk';adv='Some risk factors present. Managing these proactively can significantly reduce your risk.';tip='💡 Blood pressure management is the single most important factor. Regular monitoring and GP review are recommended.';}
+  else if(score<=16){color='#E67E22';cat='High Stroke Risk — Take Action';adv='Multiple risk factors significantly raise your stroke risk. Medical review is strongly advised.';tip='💡 Discuss your full risk profile with your GP. Medication (blood pressure, anticoagulants for AF) may be recommended.';}
+  else{color='#C0392B';cat='Very High Stroke Risk — See Your GP Now';adv='Your risk profile indicates very high stroke risk. Urgent medical assessment and preventive treatment are needed.';tip='⚠️ Please make an appointment with your GP without delay. Stroke is largely preventable with the right treatment.';}
+  showResult('st',color,'Risk Score: '+score,cat,`<p>${adv}</p><div class="${score>10?'result-warning':'result-tips'}"><p>${tip}</p></div><p style="margin-top:10px;font-size:12px;color:#999">This is an educational estimate. Clinical stroke risk tools (CHA₂DS₂-VASc) should be used by your healthcare provider.</p>`);
+}
+
+function checkWHR(){
+  const waist=parseFloat(document.getElementById('whr-waist').value);
+  const hip=parseFloat(document.getElementById('whr-hip').value);
+  const sex=document.getElementById('whr-sex').value;
+  if(!waist||!hip){alert('Please enter waist and hip measurements.');return;}
+  const ratio=(waist/hip).toFixed(2);
+  const highThresh=sex==='female'?0.85:0.90;
+  let color,cat,adv,tip;
+  if(ratio<(sex==='female'?0.75:0.80)){color='#1A7A4A';cat='Low Risk ✓';adv=`Your waist-to-hip ratio of ${ratio} is in the low-risk range. This suggests healthy fat distribution.`;tip='💡 Maintain your healthy habits. Regular exercise and a balanced diet keep abdominal fat at bay.';}
+  else if(ratio<highThresh){color='#D4AC0D';cat='Moderate Risk';adv=`Your ratio of ${ratio} is in the moderate range. Some abdominal fat accumulation may be present.`;tip='💡 Increasing aerobic exercise and reducing refined carbohydrates and sugar can help reduce abdominal fat.';}
+  else{color='#C0392B';cat='High Risk — Abdominal Obesity';adv=`Your ratio of ${ratio} exceeds the recommended threshold (${highThresh} for ${sex==='female'?'women':'men'}), indicating abdominal obesity. This raises cardiovascular risk.`;tip='💡 Abdominal fat is particularly linked to heart disease, diabetes and hypertension. Speak with your GP or a dietitian.';}
+  showResult('whr',color,ratio,cat,`<p>${adv}</p><div class="${ratio>=highThresh?'result-warning':'result-tips'}"><p>${tip}</p></div>`);
+}
+
+function checkCalories(){
+  const age=parseInt(document.getElementById('cal-age').value);
+  const sex=document.getElementById('cal-sex').value;
+  const weight=parseFloat(document.getElementById('cal-weight').value);
+  const height=parseFloat(document.getElementById('cal-height').value);
+  const activity=parseFloat(document.getElementById('cal-activity').value);
+  if(!age||!weight||!height||!activity){alert('Please fill in all fields.');return;}
+  let bmr;
+  if(sex==='male')bmr=10*weight+6.25*height-5*age+5;
+  else bmr=10*weight+6.25*height-5*age-161;
+  const tdee=Math.round(bmr*activity);
+  const maintain=tdee;
+  const lose=Math.round(tdee-500);
+  const gain=Math.round(tdee+300);
+  showResult('cal','#1A7A4A',tdee+' kcal','Daily maintenance calories',`<p>To maintain your current weight, aim for approximately <strong>${maintain} kcal/day</strong>.</p><div class="result-tips"><p>💡 <strong>To lose weight gradually:</strong> ~${lose} kcal/day | <strong>To gain weight:</strong> ~${gain} kcal/day<br>These are estimates based on the Mifflin-St Jeor equation. Individual needs vary.</p></div><p style="margin-top:10px;font-size:12px;color:#999">Focus on food quality, not just calories. A diet rich in vegetables, whole grains, lean protein and healthy fats supports heart health.</p>`);
+}
 </script>
 </body>
 </html>
+
+
